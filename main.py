@@ -36,10 +36,7 @@ while len(regioni_indovinate) < 20:
                                 prompt="Quale regione manca?").title()
 
     if risposta == 'Esci':
-        regioni_mancanti = []
-        for regione in regioni_list:
-            if regione not in regioni_indovinate:
-                regioni_mancanti.append(regione)
+        regioni_mancanti = [regione for regione in regioni_list if regione not in regioni_indovinate]
 
         new_data = pandas.DataFrame(regioni_mancanti)
         new_data.to_csv('regioni da studiare.csv')
